@@ -1,0 +1,24 @@
+{
+  "name": "itnews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://kebi3477:wnddkd1204@github.com/kebi3477/ItNews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kebi3477/ItNews/issues"
+  },
+  "homepage": "https://github.com/kebi3477/ItNews#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "vue": "^2.6.11"
+  }
+}

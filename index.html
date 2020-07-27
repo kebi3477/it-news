@@ -1,0 +1,25 @@
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript">
+		Vue.component('list-component', {
+			template : '<div>테스트</div>'
+		})
+	</script>
+	<style>
+
+	</style>
+</head> 
+<body>
+	<div id="lists">
+		<list-component></list-component>
+	</div>
+	<script>
+		const v = new Vue({
+			el: "#lists"
+		})
+	</script>
+</body> 
+</html>
