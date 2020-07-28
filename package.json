@@ -19,6 +19,7 @@
   "homepage": "https://github.com/kebi3477/ItNews#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "ejs": "~2.4.1"
   }
 }
