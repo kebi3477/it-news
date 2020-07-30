@@ -2,6 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>It Newsies</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<link rel="stylesheet" href="assets/css/index.css">
 </head> 
@@ -15,29 +16,10 @@
 		</div>
 	</template>
 
-	<script type="text/javascript">
-		Vue.component('list-component', {
-			template : '#list-component',
-			props : [ 'lists' ]
-		})
-	</script>
 	<div id="lists">
 		<list-component :lists="newslists"></list-component>
 	</div>
 
-	<script>
-		const v = new Vue({
-			el: "#lists",
-			data() {
-				return {
-					newslists : [
-						{"title":"제목1","subtitle":"본문1"},
-						{"title":"제목2","subtitle":"본문2"},
-						{"title":"제목3","subtitle":"본문3"},
-					]
-				}
-			}
-		})
-	</script>
+	<script src="../assets/js/component.js"></script>
 </body> 
 </html>

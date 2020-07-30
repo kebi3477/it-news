@@ -1,7 +1,6 @@
 {
   "name": "itnews",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -18,8 +17,13 @@
   },
   "homepage": "https://github.com/kebi3477/ItNews#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "ejs": "~2.4.1",
     "express": "^4.17.1",
-    "vue": "^2.6.11",
-    "ejs": "~2.4.1"
-  }
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }
