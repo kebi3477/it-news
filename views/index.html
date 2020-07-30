@@ -9,15 +9,17 @@
 <body>
 	<template id="list-component">
 		<div>
-			<div class="lists" v-for="list in lists">
-				<h1>{{list.title}}</h1>
-				<p>{{list.subtitle}}</p>
-			</div>
+			<a :href="list.href" v-for="list in lists">
+				<div class="lists">
+					<h1>{{list.title}}</h1>
+					<p>{{list.subtitle}}</p>
+				</div>
+			</a>
 		</div>
 	</template>
 
 	<div id="lists">
-		<list-component :lists="newslists"></list-component>
+		<list-component v-bind:lists="newslists"></list-component>
 	</div>
 
 	<script src="../assets/js/component.js"></script>

@@ -1,6 +1,9 @@
 * {
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: #222;
 }
 .lists {
     width: 90%;
