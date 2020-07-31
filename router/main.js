@@ -17,10 +17,13 @@ module.exports = app => {
     });
     app.get('/getNewsData', (req, res) => {
         console.log(dataLists);
-        getNewsData().then(result => {
+        if(dataLists.length === 0) {
+            getNewsData().then(result => {
+                res.json(dataLists);
+            })
+        } else {
             res.json(dataLists);
-            //res.render('index.html');
-        })
+        }
     })
 }
 

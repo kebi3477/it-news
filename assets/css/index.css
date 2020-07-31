@@ -5,10 +5,55 @@
     list-style: none;
     color: #222;
 }
+/* .list-component */
+.list-component {
+    padding-top: 5vw;
+}
 .lists {
-    width: 90%;
-    margin: 5% auto;
-    padding: 1vh;
+    width: 88vw;
+    margin: 4vw auto;
+    padding: 2vw;
     border-radius: .35rem;
     box-shadow: 1px 1px 3px #7d7d7d;
+}
+#lists a:first-child > .lists {
+    margin-top: 0;
+}
+.lists > h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* .loading */
+@keyframes loading {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+.loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #00000077;
+    display: none;
+}
+.loading-bar {
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    border: .7rem solid #fff;
+    border-bottom: .7rem solid #fff7;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    margin-left: -1.5rem;
+    margin-top: -1.5rem;
+    animation: loading 1s infinite;
+}
+.active-loading {
+    display: block;
 }

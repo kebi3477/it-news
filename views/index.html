@@ -8,17 +8,24 @@
 </head> 
 <body>
 	<template id="list-component">
-		<div>
+		<div class="list-component">
 			<a :href="list.href" v-for="list in lists">
 				<div class="lists">
-					<h1>{{list.title}}</h1>
+					<h2>{{list.title}}</h2>
 					<p>{{list.subtitle}}</p>
 				</div>
 			</a>
 		</div>
 	</template>
 
+	<template id="loading">
+		<div class="loading">
+			<div class="loading-bar"></div>
+		</div>
+	</template>
+
 	<div id="lists">
+		<loading></loading>
 		<list-component v-bind:lists="newslists"></list-component>
 	</div>
 
