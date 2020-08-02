@@ -1,5 +1,3 @@
-//const dataList = require("../util/crolling");
-
 const axios = require("axios");
 const cheerio = require("cheerio");
 const dataLists = [];
@@ -7,16 +5,11 @@ const dataLists = [];
 module.exports = app => {
     app.get('/', (req, res) => {
         res.render('index.html');
-        // getNewsData().then(result => {
-        //     //res.json(dataLists);
-        //     res.render('index.html');
-        // })
     });
     app.get('/about', (req, res) => {
         res.render('about.html');
     });
     app.get('/getNewsData', (req, res) => {
-        console.log(dataLists);
         if(dataLists.length === 0) {
             getNewsData().then(result => {
                 res.json(dataLists);
@@ -24,6 +17,12 @@ module.exports = app => {
         } else {
             res.json(dataLists);
         }
+    })
+    app.get('/setSession', (req, res) => {
+        req.session.log = 'kebi3477';
+        req.session.pwd = 'wnddkd1204';
+        console.log(req.session)
+        //res.json(req.session);
     })
 }
 
