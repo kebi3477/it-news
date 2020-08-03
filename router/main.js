@@ -27,22 +27,63 @@ module.exports = app => {
 }
 
 function getNewsData() {
-    let url = "http://www.itnews.or.kr/?cat=1162";
+    const url = {
+        "itNews" : "http://www.itnews.or.kr/?cat=1162",
+        //"zdnet" : "https://zdnet.co.kr/news/?lstcode=0020&page=1,
+        "cio" : "http://www.ciokorea.com/news/"
+    };
+    const bodySelector = {
+        "itNews" : "div.td-item-details",
+        //"zdnet" : "div.newsPost",
+        "cio" : "div.list_ "
+    }
+    const titleSelector = {
+        "itNews" : ".entry-title > a",
+        //"zdnet" : ".assetText > a > h3",
+        "cio" : "div:first-child > h4 > a"
+    }
+    const subtitleSelector = {
+        "itNews" : ".td-excerpt",
+        //"zdnet" : ".assetText > a > p",
+        "cio" : ".news_list_has_thumb_size > .news_body_summary"
+    }
+    const hrefSelector = {
+        "itNews" : ".td-read-more > a",
+        //"zdnet" : ".assetText > a",
+        "cio" : "div:first-child > h4 > a"
+    }
     let dataList = [];
-    return axios.get(url).then(html => {
-        const $ = cheerio.load(html.data);
-        const $bodyList = $("div.td-item-details");
-
-        $bodyList.each(function(i, elem) {
-            dataList[i] = {
-                title : $(this).find(".entry-title > a").text(),
-                subtitle : $(this).find(".td-excerpt").text(),
-                href : $(this).find(".td-read-more > a").attr("href")
+    let promise;
+    
+    for(let i in url) {
+        promise = axios.get(url[i]).then(html => {
+            if(i === "zdnet") console.log(html)
+            const $ = cheerio.load(html.data);
+            const $bodyList = $(bodySelector[i]);
+            
+            $bodyList.each(function(index, elem) {
+                dataList[index] = {
+                    title : $(this).find(titleSelector[i]).text(),
+                    subtitle : $(this).find(subtitleSelector[i]).text(),
+                    href : $(this).find(hrefSelector[i]).attr("href")
+                }
+            })
+            dataList.forEach(json => {
+                dataLists.push(json);
+            })
+        })
+        .catch(err => {
+            if(err.response) {
+                console.log(err.response.data);
+                console.log(err.response.status);
+                console.log(err.response.headers);
+            } else if(err.request) {
+                console.log(err.request);
+            } else {
+                console.log("Error", err.message);
             }
-        })
-
-        dataList.forEach(json => {
-            dataLists.push(json);
-        })
-    })
+            console.log(err.config);
+        });
+    }
+    return promise;
 }
