@@ -59,6 +59,11 @@ function getNewsData() {
         "cio" : "div:first-child > h4 > a",
         "itworld" : "div:first-child > h4 > a",
     }
+    const imageSelector = {
+        "itNews" : ".td-module-image > .td-module-thumb > a > img",
+        "cio" : ".list_image > img",
+        "itworld" : ".news_list_image > img"
+    }
 
     let dataList = [];
     for(let i in url) {
@@ -68,11 +73,16 @@ function getNewsData() {
             const $bodyList = $(bodySelector[i]);
             $bodyList.each(function (index, elem) {
                 const dataLink = $(this).find(hrefSelector[i]).attr("href");
+                const imgSrc = $(this).find(imageSelector[i]).attr("src");
                 dataList[index] = {
                     title: $(this).find(titleSelector[i]).text(),
                     subtitle: $(this).find(subtitleSelector[i]).text(),
-                    href: dataLink.indexOf("http") > -1 ? dataLink : url[i] + dataLink.split("/")[2]
+                    href: dataLink.indexOf("http") > -1 ? dataLink : url[i] + dataLink.split("/")[2],
+                    img: i === "cio" || i === "itworld" ? 
+                        url[i].slice(0,-6) + imgSrc : ""
+
                 };
+                console.log(dataList[index].img)
             });
             dataList.forEach(json => {
                 dataLists.push(json);
