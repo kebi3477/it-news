@@ -32,33 +32,38 @@ function getNewsData() {
     const url = {
         "itNews" : "http://www.itnews.or.kr/?cat=1162",
         //"zdnet" : "https://zdnet.co.kr/news/?lstcode=0020&page=1,
-        "cio" : "http://www.ciokorea.com/news/"
+        "cio" : "http://www.ciokorea.com/news/",
+        "itworld" : "http://www.itworld.co.kr/news/"
     };
     const bodySelector = {
         "itNews" : "div.td-item-details",
         //"zdnet" : "div.newsPost",
-        "cio" : "div.list_ "
+        "cio" : "div.list_ ",
+        "itworld" : "div.news_list_"
     }
     const titleSelector = {
         "itNews" : ".entry-title > a",
         //"zdnet" : ".assetText > a > h3",
-        "cio" : "div:first-child > h4 > a"
+        "cio" : "div:first-child > h4 > a",
+        "itworld" : "div:first-child > h4 > a"
     }
     const subtitleSelector = {
         "itNews" : ".td-excerpt",
         //"zdnet" : ".assetText > a > p",
-        "cio" : ".news_list_has_thumb_size > .news_body_summary"
+        "cio" : ".fl > .news_body_summary",
+        "itworld" : ".fl > .news_body_summary"
     }
     const hrefSelector = {
         "itNews" : ".td-read-more > a",
         //"zdnet" : ".assetText > a",
-        "cio" : "div:first-child > h4 > a"
+        "cio" : "div:first-child > h4 > a",
+        "itworld" : "div:first-child > h4 > a",
     }
-    
+
     let dataList = [];
     for(let i in url) {
         promiseArr.push(axios.get(url[i]).then(html => {
-            console.log(`url : ${url[i]}`);
+            console.log(`getDataUrl : ${url[i]}`);
             const $ = cheerio.load(html.data);
             const $bodyList = $(bodySelector[i]);
             $bodyList.each(function (index, elem) {
