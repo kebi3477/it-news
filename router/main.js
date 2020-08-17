@@ -8,9 +8,6 @@ module.exports = app => {
     app.get('/', (req, res) => {
         res.render('index.html');
     });
-    app.get('/about', (req, res) => {
-        res.render('about.html');
-    });
     app.get('/getNewsData', (req, res) => {
         if(dataLists.length === 0) {
             getNewsData();
@@ -21,41 +18,35 @@ module.exports = app => {
             res.json(dataLists);
         }
     })
-    app.get('/setSession', (req, res) => {
-        req.session.log = '';
-        req.session.pwd = '';
-        //res.json(req.session);
-    })
+    // app.get('/setSession', (req, res) => {
+    //     req.session.log = '';
+    //     req.session.pwd = '';
+    // })
 }
 
 function getNewsData() {
     const url = {
         "itNews" : "http://www.itnews.or.kr/?cat=1162",
-        //"zdnet" : "https://zdnet.co.kr/news/?lstcode=0020&page=1,
         "cio" : "http://www.ciokorea.com/news/",
         "itworld" : "http://www.itworld.co.kr/news/"
     };
     const bodySelector = {
         "itNews" : "div.td-item-details",
-        //"zdnet" : "div.newsPost",
         "cio" : "div.list_ ",
         "itworld" : "div.news_list_"
     }
     const titleSelector = {
         "itNews" : ".entry-title > a",
-        //"zdnet" : ".assetText > a > h3",
         "cio" : "div:first-child > h4 > a",
         "itworld" : "div:first-child > h4 > a"
     }
     const subtitleSelector = {
         "itNews" : ".td-excerpt",
-        //"zdnet" : ".assetText > a > p",
         "cio" : ".fl > .news_body_summary",
         "itworld" : ".fl > .news_body_summary"
     }
     const hrefSelector = {
         "itNews" : ".td-read-more > a",
-        //"zdnet" : ".assetText > a",
         "cio" : "div:first-child > h4 > a",
         "itworld" : "div:first-child > h4 > a",
     }
