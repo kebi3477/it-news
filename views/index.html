@@ -11,10 +11,12 @@
 		<div class="list-component">
 			<a :href="list.href" v-for="list in lists">
 				<div class="lists">
-					<h2>{{list.title}}</h2>
-					<p>{{list.subtitle}}</p>
+					<div class="list-image" v-if="list.img" :style="{backgroundImage: 'url(' + list.img + ')'}"></div>
+					<div class="list-content">
+						<div class="list-title">{{list.title}}</div>
+						<p>{{list.subtitle}}</p>
+					</div>
 				</div>
-				<img :src="list.img">
 			</a>
 		</div>
 	</template>

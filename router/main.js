@@ -78,11 +78,8 @@ function getNewsData() {
                     title: $(this).find(titleSelector[i]).text(),
                     subtitle: $(this).find(subtitleSelector[i]).text(),
                     href: dataLink.indexOf("http") > -1 ? dataLink : url[i] + dataLink.split("/")[2],
-                    img: i === "cio" || i === "itworld" ? 
-                        url[i].slice(0,-6) + imgSrc : ""
-
+                    img: i === "itNews" || imgSrc === undefined ? "" : url[i].slice(0,-6) + imgSrc  
                 };
-                console.log(dataList[index].img)
             });
             dataList.forEach(json => {
                 dataLists.push(json);
